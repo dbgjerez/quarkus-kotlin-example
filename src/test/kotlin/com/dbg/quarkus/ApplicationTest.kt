@@ -14,7 +14,7 @@ open class ApplicationTest {
             .`when`().get("/todo")
             .then()
             .statusCode(200)
-            .body(`is`("{\"title\":\"Hello world!\"}"))
+            .body(`is`("[{\"title\":\"a\"},{\"title\":\"b\"}]"))
     }
 
 }
