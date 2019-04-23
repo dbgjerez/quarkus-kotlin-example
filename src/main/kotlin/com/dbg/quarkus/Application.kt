@@ -19,8 +19,23 @@ class Application {
     @GET
     fun all(): List<Todo> = todoDAO.findAll()
 
+    @GET
+    @Path("/{id}")
+    fun byId(@PathParam("id") id: String?): Response =
+        id.let { Response.ok(todoDAO.findById(it)).build() } ?: Response.noContent().build()
+
     @POST
     fun create(todo: Todo?): Response =
         todo?.let { Response.ok(todoDAO.create(todo)).build() } ?: Response.noContent().build()
+
+    @DELETE
+    @Path("/{id}")
+    fun delete(@PathParam("id") id: String?): Response =
+        id.let { Response.ok().build() } ?: Response.noContent().build()
+
+    @PUT
+    @Path("/{id}")
+    fun update(@PathParam("id") id: String?, todo: Todo?): Response =
+        id.let { todo.let { Response.ok().build() } } ?: Response.noContent().build()
 
 }

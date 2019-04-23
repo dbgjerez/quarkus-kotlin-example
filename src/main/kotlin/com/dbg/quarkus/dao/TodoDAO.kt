@@ -9,5 +9,6 @@ class TodoDAO {
 
     fun findAll() = Arrays.asList(Todo("a"), Todo("b"))
     fun create(todo: Todo): Todo = Todo("a")
+    fun findById(id: String?) = id.let { Todo("ok") }
 
 }
